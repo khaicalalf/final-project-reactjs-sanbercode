@@ -27,6 +27,8 @@ export const GlobalProvider = (props) => {
   const [fetchStatus, setFetchStatus] = useState(true)
 
   const [currentId, setCurrentId] = useState(-1)
+
+  const [error, setError] = useState('');
   
   const fetchData = () => {
     axios.get("https://dev-example.sanbercloud.com/api/job-vacancy")
@@ -35,6 +37,7 @@ export const GlobalProvider = (props) => {
       })
       .catch((error) => {
         setFetchStatus(false)
+        setError('Error fetching data: ' + error.message);
       })
   }
 
@@ -113,7 +116,7 @@ export const GlobalProvider = (props) => {
 
 
   let states = {
-    data, setData, fetchStatus, setFetchStatus, currentId, setCurrentId, input, setInput}
+    data, setData, fetchStatus, setFetchStatus, currentId, setCurrentId, input, setInput, error, setError}
 
     let handleFunct = {
         handlePriceMax,

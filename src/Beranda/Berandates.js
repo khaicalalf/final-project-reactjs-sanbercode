@@ -6,13 +6,13 @@ const Berandates = () =>{
   const { states, handleFunct } = useContext(GlobalDeclaration)
 
   const {
-    data, setData, fetchStatus, setFetchStatus, input, setInput} = states
+    data, setData, fetchStatus, setFetchStatus, input, setInput, error, setError} = states
   
   const {
     handlePriceMin,
     handlePriceMax,
     fetchData,
-    handlePage
+    handlePage,
 
 } = handleFunct
 
@@ -34,7 +34,7 @@ return (
           <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <h4 className="mb-8 text-2xl font-bold tracking-tight text-gray-900     dark:text-white">Find your Job that need you!</h4>
               <div className="mx-auto">
-           
+              {error && <div className="error">I'm sorry, API is down <br></br>{error}</div>}
                 <div className="grid grid-cols-2 gap-2">
                     
                     { data !== null && data.map((res, index) => {
@@ -64,6 +64,7 @@ return (
                             </>)
                     })}
                 </div>
+                
               </div> 
             
           </div>
